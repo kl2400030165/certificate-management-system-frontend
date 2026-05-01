@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { RiUserLine, RiMailLine, RiLockLine, RiEyeLine, RiEyeOffLine } from 'react-icons/ri';
+import { RiUserLine, RiMailLine, RiLockLine, RiEyeLine, RiEyeOffLine, RiShieldCheckLine, RiErrorWarningLine, RiCheckboxCircleLine } from 'react-icons/ri';
 
 const RegisterPage = () => {
     const [form, setForm] = useState({ name: '', email: '', password: '', confirm: '' });
@@ -37,15 +37,15 @@ const RegisterPage = () => {
         <div className="auth-wrapper">
             <div className="auth-card fade-up">
                 <div className="auth-logo">
-                    <div style={{ width: 48, height: 48, borderRadius: 12, background: 'linear-gradient(135deg,#4f8ef7,#8b5cf6)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22 }}>🎓</div>
-                    <span style={{ fontSize: 22, fontWeight: 800, background: 'linear-gradient(135deg,#4f8ef7,#8b5cf6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>CertifyPro</span>
+                    <div className="brand-icon" style={{ width: 48, height: 48, borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22 }}><RiShieldCheckLine /></div>
+                    <span style={{ fontSize: 22, fontWeight: 800, color: 'var(--text-primary)' }}>CertifyPro</span>
                 </div>
 
                 <h2 className="auth-title">Create Account</h2>
                 <p className="auth-subtitle">Start tracking your certifications today</p>
 
-                {error && <div className="auth-error">⚠ {error}</div>}
-                {success && <div className="auth-success">✓ {success}</div>}
+                {error && <div className="auth-error"><RiErrorWarningLine /> {error}</div>}
+                {success && <div className="auth-success"><RiCheckboxCircleLine /> {success}</div>}
 
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
@@ -91,7 +91,7 @@ const RegisterPage = () => {
 
                     <button type="submit" className="btn-primary-custom w-100" disabled={loading}
                         style={{ justifyContent: 'center', padding: '13px', marginTop: 8 }}>
-                        {loading ? '⏳ Creating...' : '🚀 Create Account'}
+                        {loading ? 'Creating...' : 'Create Account'}
                     </button>
                 </form>
 
